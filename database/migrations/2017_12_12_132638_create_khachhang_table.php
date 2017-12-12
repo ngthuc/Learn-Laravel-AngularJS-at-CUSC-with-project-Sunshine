@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMauTable extends Migration
+class CreateKhachhangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMauTable extends Migration
      */
     public function up()
     {
-        Schema::create('mau', function (Blueprint $table) {
+        Schema::create('khachhang', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });

@@ -14,8 +14,12 @@ class CreateLoaiTable extends Migration
     public function up()
     {
         Schema::create('loai', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->engine = 'MyISAM'; // for READ
+            $table->tinyIncrements('1_ma');
+            $table->string('1_ten', 50);
+            $table->timestamp('1_taoMoi')->default(DB:raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('1_capNhat')->default(DB:raw('CURRENT_TIMESTAMP'));
+            $table->unsignedTinyInteger('1_trangThai')->default('2');
         });
     }
 

@@ -14,11 +14,11 @@ class CreateXuatxuTable extends Migration
     public function up()
     {
         Schema::create('xuatxu', function (Blueprint $table) {
-          $table->tinyIncrements('xx_ma');
-          $table->string('xx_ten', 100);
-          $table->timestamp('xx_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
-          $table->timestamp('xx_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));
-          $table->unsignedTinyInteger('xx_trangThai')->default('2');
+            $table->smallIncrements('xx_ma');
+            $table->string('xx_ten',100)->unique();
+            $table->timestamp('xx_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('xx_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedTinyInteger('xx_trangThai')->default(2);
         });
     }
 

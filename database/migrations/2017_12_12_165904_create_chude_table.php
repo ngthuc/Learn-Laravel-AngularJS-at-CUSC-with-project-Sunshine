@@ -14,11 +14,11 @@ class CreateChudeTable extends Migration
     public function up()
     {
         Schema::create('chude', function (Blueprint $table) {
-          $table->tinyIncrements('cd_ma');
-          $table->string('cd_ten', 50);
-          $table->timestamp('cd_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
-          $table->timestamp('cd_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));
-          $table->unsignedTinyInteger('cd_trangThai')->default('2');
+            $table->increments('cd_ma');
+            $table->string('cd_ten',50)->unique();
+            $table->timestamp('cd_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('cd_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->unsignedTinyInteger('cd_trangThai')->default(2);
         });
     }
 

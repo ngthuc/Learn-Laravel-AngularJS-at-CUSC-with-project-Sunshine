@@ -14,9 +14,10 @@ class CreateHinhanhTable extends Migration
     public function up()
     {
         Schema::create('hinhanh', function (Blueprint $table) {
-            $table->unsignedBigInteger('sp_ma');
-            $table->unsignedTinyInteger('ha_stt')->default('2');
-            $table->string('ha_ten', 150);
+            $table->bigIncrements('sp_ma')->comment('Vừa là khóa ngoại và khóa chính');
+            $table->tinyInteger('ha_stt')->defaut(1);
+            $table->string('ha_ten',150);
+            $table->foreign('sp_ma')->references('sp_ma')->on('sanpham');
         });
     }
 

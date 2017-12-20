@@ -14,8 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Fix 1071 error when using Migrations
+        //
         Schema::defaultStringLength(191);
+
     }
 
     /**

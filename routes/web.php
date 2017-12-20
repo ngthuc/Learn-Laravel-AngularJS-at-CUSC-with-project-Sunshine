@@ -1,5 +1,5 @@
 <?php
-
+use App\ChuDe;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,4 +13,9 @@
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('laydanhsachchude',function(){
+  $dsChuDe = ChuDe::all();
+  return json_encode($dsChuDe);
 });

@@ -15,7 +15,8 @@ class ChuDe2Controller extends Controller
     public function index()
     {
       $dsChude = ChuDe::all();
-      return json_encode($dsChude);
+      // return json_encode($dsChude);
+      return view('ChuDe2.index')->with('dsChude',$dsChude);
     }
 
     /**

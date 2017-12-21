@@ -1,6 +1,6 @@
 <h1>Xin chào, đây là chức năng hiển thị danh sách các chủ đề</h1>
 
-<a href="chude2/create">Bấm vào đây để thêm mới</a>
+<a href="chude/create">Bấm vào đây để thêm mới</a>
 <table class="table" border="1">
   <thead>
     <tr>

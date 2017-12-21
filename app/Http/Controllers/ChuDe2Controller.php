@@ -26,7 +26,7 @@ class ChuDe2Controller extends Controller
      */
     public function create()
     {
-        //
+        return view('ChuDe2.create');
     }
 
     /**

@@ -20,10 +20,10 @@ class CreateKhuyenmaiTable extends Migration
             $table->dateTime('km_batDau');
             $table->dateTime('km_ketThuc')->nullable()->default(NULL);
             $table->string('km_giaTri',50)->default('100;100');
-            $table->unsignedSmallInteger('nv_nguoiLap');
+            $table->unsignedTinyInteger('nv_nguoiLap');
             $table->dateTime('km_ngayLap')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->unsignedSmallInteger('nv_kyNhay')->default(1);
-            $table->unsignedSmallInteger('nv_kyDuyet')->default(1);
+            $table->unsignedTinyInteger('nv_kyNhay')->default(1);
+            $table->unsignedTinyInteger('nv_kyDuyet')->default(1);
             $table->dateTime('km_ngayKyNhay')->nullable()->default(NULL);
             $table->timestamp('km_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('km_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));

@@ -18,7 +18,7 @@ class CreateHoadonleTable extends Migration
             $table->string('hdl_nguoiMuaHang',100);
             $table->string('hdl_dienThoai',11);
             $table->string('hdl_diaChi',250);
-            $table->unsignedSmallInteger('nv_lapHoaDon');
+            $table->unsignedTinyInteger('nv_lapHoaDon');
             $table->foreign('nv_lapHoaDon')->references('nv_ma')->on('nhanvien')->onDelete('cascade')->onUpdate('cascade');
             $table->dateTime('hdl_ngayXuatHoaDon')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->unsignedBigInteger('dh_ma');

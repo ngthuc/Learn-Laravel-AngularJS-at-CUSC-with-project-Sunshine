@@ -20,10 +20,10 @@ class CreateHoadonsiTable extends Migration
             $table->string('hds_diaChi',250);
             $table->string('hds_maSoThe',14);
             $table->string('hds_soTaiKhoan',20)->nullable()->default(NULL);
-            $table->unsignedSmallInteger('nv_lapHoaDon');
+            $table->unsignedTinyInteger('nv_lapHoaDon');
             $table->foreign('nv_lapHoaDon')->references('nv_ma')->on('nhanvien');
             $table->dateTime('hds_ngayXuatHoaDon')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->unsignedSmallInteger('nv_thuTruong')->default(1);
+            $table->unsignedTinyInteger('nv_thuTruong')->default(1);
             $table->foreign('nv_thuTruong')->references('nv_ma')->on('nhanvien');
             $table->timestamp('hds_taoMoi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('hds_capNhat')->default(DB::raw('CURRENT_TIMESTAMP'));

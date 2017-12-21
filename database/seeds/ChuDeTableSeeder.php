@@ -32,7 +32,7 @@ class ChuDeTableSeeder extends Seeder
       $faker = Faker\Factory::create('vi-VN');
       $now = new Carbon('2017-12-16','Asia/Ho_Chi_Minh');
       $list = [];
-      for( $i = 1; $i <= 10; $i++){
+      for( $i = 1; $i <= 50; $i++){
         $created = $now->copy()->addSeconds(
           $faker->numberBetween(1,259200)
         );

@@ -25,10 +25,10 @@ class CreateDonhangTable extends Migration
             $table->string('dh_nguoiGui',100);
             $table->text('dh_loiChuc')->nullable();
             $table->unsignedTinyInteger('dh_daThanhToan')->default(0);
-            $table->unsignedSmallInteger('nv_xuLy')->default(1);
+            $table->unsignedTinyInteger('nv_xuLy')->default(1);
             $table->foreign('nv_xuLy')->references('nv_ma')->on('nhanvien');
             $table->dateTime('dh_ngayXuLy')->nullable()->default(NULL);
-            $table->unsignedSmallInteger('nv_giaoHang')->default(1);
+            $table->unsignedTinyInteger('nv_giaoHang')->default(1);
             $table->foreign('nv_giaoHang')->references('nv_ma')->on('nhanvien');
             $table->dateTime('dh_ngayLapPhieuGiao')->nullable()->default(NULL);
             $table->dateTime('dh_ngayGiaoHang')->nullable()->default(NULL);

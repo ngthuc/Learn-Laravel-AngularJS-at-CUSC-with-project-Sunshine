@@ -6,12 +6,13 @@ Danh sách Chủ đề
 
 @section('page-header')
 <h1>
-  Danh sách Chủ đề
-  <small>Các chủ đề</small>
+  Chủ đề
+  <small>Các chủ đề về loại hoa</small>
 </h1>
 @endsection
 
 @section('content')
+<a href="{{ route('chude.create') }}">Bấm vào đây để thêm mới dữ liệu</a>
 <div class="box">
             <div class="box-header">
               <h3 class="box-title">Responsive Hover Table</h3>

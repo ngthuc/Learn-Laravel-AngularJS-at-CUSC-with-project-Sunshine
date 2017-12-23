@@ -16,7 +16,7 @@ class ChuDe2Controller extends Controller
     {
       $dsChude = ChuDe::all();
       // return json_encode($dsChude);
-      return view('ChuDe2.index')->with('dsChude',$dsChude);
+      return view('backend.chude.index')->with('dsChude',$dsChude);
     }
 
     /**

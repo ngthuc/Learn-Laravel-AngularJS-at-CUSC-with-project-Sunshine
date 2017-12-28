@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChuDe extends Model
 {
     const CREATED_AT = 'cd_taoMoi';
-    const UPDATE_AT = 'cd_capNhat';
+    const UPDATED_AT = 'cd_capNhat';
 
     protected $table = 'chude';
     protected $fillable = ['cd_ten','cd_taoMoi','cd_capNhat','cd_trangThai'];

@@ -37,8 +37,22 @@ class ChuDe2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
-        // Lưu vào CSDL
+        try {
+          // Lưu vào CSDL
+          $chude = new ChuDe();
+          $chude->cd_ten = $request->cd_ten;
+          $chude->cd_taoMoi = $request->cd_taoMoi;
+          $chude->cd_capNhat = $request->cd_capNhat;
+          $chude->cd_trangThai = $request->cd_trangThai;
+          $save = $chude->save();
+
+          return redirect(route('chude.index'));
+        }
+        catch(QueryException $ex) {
+          return response([
+              'error' => true, 'message' => $ex->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -60,7 +74,10 @@ class ChuDe2Controller extends Controller
      */
     public function edit($id)
     {
-        //
+        // Sửa dữ liệu
+        $chude = ChuDe::find($id);
+
+        return view('backend.chude.edit')->with('chude', $chude);
     }
 
     /**
@@ -72,7 +89,23 @@ class ChuDe2Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Cập nhật dữ liệu một dòng
+        try {
+          // Lưu vào CSDL
+          $chude = ChuDe::find($id);
+          $chude->cd_ten = $request->cd_ten;
+          $chude->cd_taoMoi = $request->cd_taoMoi;
+          $chude->cd_capNhat = $request->cd_capNhat;
+          $chude->cd_trangThai = $request->cd_trangThai;
+          $save = $chude->save();
+
+          return redirect(route('chude.index'));
+        }
+        catch(QueryException $ex) {
+          return response([
+              'error' => true, 'message' => $ex->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -83,6 +116,18 @@ class ChuDe2Controller extends Controller
      */
     public function destroy($id)
     {
-        //
+      // Xóa dữ liệu
+      try {
+        // Lưu vào CSDL
+        $chude = ChuDe::find($id);
+        $save = $chude->delete();
+
+        return redirect(route('chude.index'));
+      }
+      catch(QueryException $ex) {
+        return response([
+            'error' => true, 'message' => $ex->getMessage()
+          ], 500);
+      }
     }
 }

@@ -49,8 +49,12 @@ Danh sách Chủ đề
                     <td>{{ $chude->cd_capNhat}}</td>
                     <td>{{ $chude->cd_trangThai}}</td>
                     <td>
-                      <a href="#" type="button"><span class="label label-primary">Sửa</span></a>
-                      <a href="#" type="button"><span class="label label-danger">Xóa</span></a>
+                      <a href="{{ route('chude.edit', ['chude' => $chude->cd_ma]) }}" type="button"><span class="btn btn-primary">Sửa</span></a>
+                      <form action="{{ route('chude.destroy', ['chude' => $chude->cd_ma]) }}" method="post">
+                          {{ csrf_field() }}
+                          {{ method_field('DELETE') }}
+                          <input type="submit" class="btn btn-danger" value="Xóa">
+                      </form>
                     </td>
                   </tr>
                   @endforeach

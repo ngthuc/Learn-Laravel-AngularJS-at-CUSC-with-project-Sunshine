@@ -20,4 +20,5 @@ Route::get('/', function () {
 //   return json_encode($dsChuDe);
 // });
 
-Route::resource('chude','ChuDe2Controller');
+Route::resource('chude','ChuDeController');
+Route::resource('loai','LoaiController');

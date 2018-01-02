@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Chude;
+use App\Loai;
 
-class ChuDe2Controller extends Controller
+class LoaiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class ChuDe2Controller extends Controller
      */
     public function index()
     {
-      $dsChude = ChuDe::all();
-      // return json_encode($dsChude);
-      return view('backend.chude.index')->with('dsChude',$dsChude);
+      $dsLoai = Loai::all();
+      return view('backend.loai.index')->with('dsLoai',$dsLoai);
     }
 
     /**
@@ -26,7 +25,7 @@ class ChuDe2Controller extends Controller
      */
     public function create()
     {
-        return view('backend.chude.create');
+        return view('backend.loai.create');
     }
 
     /**
@@ -37,22 +36,22 @@ class ChuDe2Controller extends Controller
      */
     public function store(Request $request)
     {
-        try {
-          // Lưu vào CSDL
-          $chude = new ChuDe();
-          $chude->cd_ten = $request->cd_ten;
-          $chude->cd_taoMoi = $request->cd_taoMoi;
-          $chude->cd_capNhat = $request->cd_capNhat;
-          $chude->cd_trangThai = $request->cd_trangThai;
-          $save = $chude->save();
+      try {
+        // Lưu vào CSDL
+        $loai = new Loai();
+        $loai->l_ten = $request->l_ten;
+        $loai->l_taoMoi = $request->l_taoMoi;
+        $loai->l_capNhat = $request->l_capNhat;
+        $loai->l_trangThai = $request->l_trangThai;
+        $save = $loai->save();
 
-          return redirect(route('chude.index'));
-        }
-        catch(QueryException $ex) {
-          return response([
-              'error' => true, 'message' => $ex->getMessage()
-            ], 500);
-        }
+        return redirect(route('loai.index'));
+      }
+      catch(QueryException $ex) {
+        return response([
+            'error' => true, 'message' => $ex->getMessage()
+          ], 500);
+      }
     }
 
     /**
@@ -74,10 +73,10 @@ class ChuDe2Controller extends Controller
      */
     public function edit($id)
     {
-        // Sửa dữ liệu
-        $chude = ChuDe::find($id);
+      // Sửa dữ liệu
+      $loai = Loai::find($id);
 
-        return view('backend.chude.edit')->with('chude', $chude);
+      return view('backend.loai.edit')->with('loai', $loai);
     }
 
     /**
@@ -89,23 +88,23 @@ class ChuDe2Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Cập nhật dữ liệu một dòng
-        try {
-          // Lưu vào CSDL
-          $chude = ChuDe::find($id);
-          $chude->cd_ten = $request->cd_ten;
-          $chude->cd_taoMoi = $request->cd_taoMoi;
-          $chude->cd_capNhat = $request->cd_capNhat;
-          $chude->cd_trangThai = $request->cd_trangThai;
-          $save = $chude->save();
+      // Cập nhật dữ liệu một dòng
+      try {
+        // Lưu vào CSDL
+        $loai = Loai::find($id);
+        $loai->l_ten = $request->l_ten;
+        $loai->l_taoMoi = $request->l_taoMoi;
+        $loai->l_capNhat = $request->l_capNhat;
+        $loai->l_trangThai = $request->l_trangThai;
+        $save = $loai->save();
 
-          return redirect(route('chude.index'));
-        }
-        catch(QueryException $ex) {
-          return response([
-              'error' => true, 'message' => $ex->getMessage()
-            ], 500);
-        }
+        return redirect(route('loai.index'));
+      }
+      catch(QueryException $ex) {
+        return response([
+            'error' => true, 'message' => $ex->getMessage()
+          ], 500);
+      }
     }
 
     /**
@@ -119,10 +118,10 @@ class ChuDe2Controller extends Controller
       // Xóa dữ liệu
       try {
         // Lưu vào CSDL
-        $chude = ChuDe::find($id);
-        $save = $chude->delete();
+        $loai = Loai::find($id);
+        $save = $loai->delete();
 
-        return redirect(route('chude.index'));
+        return redirect(route('loai.index'));
       }
       catch(QueryException $ex) {
         return response([

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\SanPham;
 
 class Loai extends Model
 {
@@ -17,4 +18,8 @@ class Loai extends Model
     protected $dates = ['l_taoMoi','l_capNhat'];
 
     protected $dateFormat = 'Y-m-d H:i:s';
+
+    public function sanphams(){
+      return $this->hasMany('App\SanPham', 'l_ma', 'l_ma');
+    }
 }

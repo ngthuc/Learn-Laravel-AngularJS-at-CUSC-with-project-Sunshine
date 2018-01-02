@@ -22,3 +22,4 @@ Route::get('/', function () {
 
 Route::resource('chude','ChuDeController');
 Route::resource('loai','LoaiController');
+Route::resource('sanpham','SanPhamController');

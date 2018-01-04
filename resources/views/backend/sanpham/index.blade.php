@@ -52,7 +52,7 @@ Danh sách Sản phẩm
                     <td>{{ $sanpham->sp_ten}}</td>
                     <td>{{ $sanpham->sp_giaGoc}}</td>
                     <td>{{ $sanpham->sp_giaBan}}</td>
-                    <td>{{ $sanpham->sp_hinh}}</td>
+                    <td><img src="{{ asset('upload/'.$sanpham->sp_hinh) }}" alt="Hình sản phẩm" width="50px" height="50px"></td>
                     <td>{{ $sanpham->sp_thongTin}}</td>
                     <td>{{ $sanpham->sp_danhGia}}</td>
                     <td>{{ $sanpham->sp_capNhat}}</td>

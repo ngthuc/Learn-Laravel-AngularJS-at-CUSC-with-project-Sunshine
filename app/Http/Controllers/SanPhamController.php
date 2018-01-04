@@ -45,7 +45,32 @@ class SanPhamController extends Controller
       $sanpham->sp_ten = $request->sp_ten;
       $sanpham->sp_giaGoc = $request->sp_giaGoc;
       $sanpham->sp_giaBan = $request->sp_giaBan;
-      $sanpham->sp_hinh = $request->sp_hinh;
+
+      // Kiểm tra file
+      if($request->hasFile('sp_hinh')) {
+        $file = $request->sp_hinh;
+        // Lấy tên files
+        // echo 'Tên file: '.$file->getClientOriginalName();
+
+        // Lấy đuôi file
+        // echp 'Đuôi file: '.$file->getClientOriginalExtension();
+        // echo '<br />';
+
+        // Lấy đường dẫn tạm thời của file
+        // echo 'Đường dẫn tạm: '.$file->getRealPath();
+        // echo '<br />';
+
+        // Lấy kích cỡ của file - đơn vị tính theo bytes
+        // echo 'Kích cỡ file: '.$file->getSize();
+        //echo '<br />';
+
+        // Lấy kiểu file
+        // echo 'Kiểu file: '.$file->getMimeType();
+
+        $sanpham->sp_hinh = $file->getClientOriginalName();
+        $file->move('upload', $sanpham->sp_hinh);
+      }
+
       $sanpham->sp_thongTin = $request->sp_thongTin;
       $sanpham->sp_danhGia = $request->sp_danhGia;
       $sanpham->sp_capNhat = $request->sp_capNhat;
@@ -83,8 +108,11 @@ class SanPhamController extends Controller
   {
     // Sửa dữ liệu
     $sanpham = SanPham::find($id);
+    $dsLoai= Loai::all();
 
-    return view('backend.sanpham.edit')->with('loai', $sanpham);
+    return view('backend.sanpham.edit')
+    ->with('sanpham', $sanpham)
+    ->with('dsLoai', $dsLoai);
   }
 
   /**
@@ -103,7 +131,14 @@ class SanPhamController extends Controller
       $sanpham->sp_ten = $request->sp_ten;
       $sanpham->sp_giaGoc = $request->sp_giaGoc;
       $sanpham->sp_giaBan = $request->sp_giaBan;
-      $sanpham->sp_hinh = $request->sp_hinh;
+
+      // Kiểm tra file
+      if($request->hasFile('sp_hinh')) {
+        $file = $request->sp_hinh;
+        $sanpham->sp_hinh = $file->getClientOriginalName();
+        $file->move('upload', $sanpham->sp_hinh);
+      }
+
       $sanpham->sp_thongTin = $request->sp_thongTin;
       $sanpham->sp_danhGia = $request->sp_danhGia;
       $sanpham->sp_capNhat = $request->sp_capNhat;

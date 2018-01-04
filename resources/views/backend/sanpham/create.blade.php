@@ -17,7 +17,7 @@ Thêm mới Sản phẩm
   </div>
   <!-- /.box-header -->
   <!-- form start -->
-  <form name="frmloai" method="POST" action="{{ route('sanpham.store') }}">
+  <form name="frmloai" method="POST" action="{{ route('sanpham.store') }}" enctype="multipart/form-data">
     <div class="box-body">
       {{ csrf_field() }}
       <div class="form-group">
@@ -42,7 +42,7 @@ Thêm mới Sản phẩm
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Hình ảnh</label>
-        <input type="text" class="form-control" name="sp_hinh" placeholder="Vui lòng chọn hình ảnh">
+        <input type="file" class="form-control" name="sp_hinh" required="true" placeholder="Vui lòng chọn hình ảnh">
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Thông tin</label>

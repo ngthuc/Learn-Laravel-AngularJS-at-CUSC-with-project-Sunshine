@@ -4,7 +4,7 @@
     <section class="sidebar">
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        
+
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Chủ đề</span>
             <span class="pull-right-container">

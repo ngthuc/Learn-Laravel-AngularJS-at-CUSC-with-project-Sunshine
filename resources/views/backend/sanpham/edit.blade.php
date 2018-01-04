@@ -45,11 +45,11 @@ Hiệu chỉnh Sản phẩm
         <label for="exampleInputEmail1">Hình ảnh</label>
         <div class="row">
           <div class="col-sm-1">
-            <img src="{{ asset('upload/'.$sanpham->sp_hinh) }}" alt="Hình sản phẩm" width="75px" height="75px" onchange="readURL(this);">
+            <img src="{{ asset('upload/'.$sanpham->sp_hinh) }}" id="img" alt="Hình sản phẩm" width="75px" height="75px">
           </div>
           <div class="col-sm-11">
             <br />
-            <input type="file" class="form-control" name="sp_hinh" value="{{ $sanpham->sp_hinh }}" required="true" placeholder="Vui lòng chọn hình ảnh">
+            <input type="file" class="form-control" id="upload" name="sp_hinh" value="{{ $sanpham->sp_hinh }}" required="true" placeholder="Vui lòng chọn hình ảnh">
           </div>
         </div>
       </div>

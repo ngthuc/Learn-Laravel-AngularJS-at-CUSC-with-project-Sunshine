@@ -4,6 +4,10 @@
 Thêm mới Chủ đề
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+@endsection
+
 @section('page-header')
 <h1>
   Thêm mới Chủ đề
@@ -12,6 +16,16 @@ Thêm mới Chủ đề
 @endsection
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $errors)
+                <li>{{ $errors }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <div class="box box-primary">
   <div class="box-header with-border">
       <h3 class="box-title">Quick Example</h3>
@@ -22,20 +36,23 @@ Thêm mới Chủ đề
     <div class="box-body">
       {{ csrf_field() }}
       <div class="form-group">
-        <label for="exampleInputEmail1">Tên chủ đề</label>
-        <input type="text" class="form-control" name="cd_ten" placeholder="Vui lòng nhập tên">
+        <label>Tên chủ đề</label>
+        <input type="text" class="form-control" name="cd_ten" placeholder="Vui lòng nhập tên" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Ngày tạo</label>
-        <input type="date" class="form-control" name="cd_taoMoi" placeholder="Chọn ngày tạo">
+        <label>Ngày tạo</label>
+        <input type="text" class="form-control datepicker" name="cd_taoMoi" placeholder="Chọn ngày tạo" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Ngày cập nhật</label>
-        <input type="date" class="form-control" name="cd_capNhat" placeholder="Chọn ngày cập nhật">
+        <label>Ngày cập nhật</label>
+        <input type="text" class="form-control datepicker" name="cd_capNhat" placeholder="Chọn ngày cập nhật" required>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Trạng thái</label>
-        <input type="text" class="form-control" name="cd_trangThai" placeholder="Vui lòng nhập trạng thái">
+        <label>Trạng thái</label>
+        <select class="form-control" name="cd_trangThai" id="cd_trangThai" required>
+          <option value="1">Khóa</option>
+          <option value="2">Khả dụng</option>
+        </select>
       </div>
     </div>
     <!-- /.box-body -->
@@ -45,4 +62,18 @@ Thêm mới Chủ đề
     </div>
   </form>
 </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script type="text/javascript">
+  $(function(){
+    // Datepicker
+    $('.datepicker').datepicker({
+      dateFormat: 'yyyy-mm-dd',
+      altFormat: 'yyyy-mm-dd',
+      autoclose: true,
+    })
+  })
+</script>
 @endsection

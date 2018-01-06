@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ChuDeRequest;
 use App\Chude;
 
 class ChuDeController extends Controller
@@ -35,8 +36,15 @@ class ChuDeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ChuDeRequest $request)
     {
+        // $this->validate($request,[
+        //     'cd_ten' => 'required|max:20',
+        //     'cd_taoMoi' => 'required',
+        //     'cd_capNhat' => 'required',
+        //     'cd_trangThai' => 'required',
+        // ]);
+
         try {
           // Lưu vào CSDL
           $chude = new ChuDe();

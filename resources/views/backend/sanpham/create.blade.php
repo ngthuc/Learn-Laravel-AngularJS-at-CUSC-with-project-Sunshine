@@ -62,7 +62,10 @@ Thêm mới Sản phẩm
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Trạng thái</label>
-        <input type="text" class="form-control" name="sp_trangThai" placeholder="Vui lòng nhập trạng thái">
+        <select class="form-control" name="sp_trangThai" id="sp_trangThai">
+          <option value="1">Khóa</option>
+          <option value="2">Khả dụng</option>
+        </select>
       </div>
     </div>
     <!-- /.box-body -->

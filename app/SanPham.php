@@ -17,8 +17,7 @@ class SanPham extends Model
 
     protected $dates = ['sp_taoMoi','sp_capNhat'];
 
-    // protected $dateFormat = 'Y-m-d H:i:s';
-    protected $dateFormat = 'mm/dd/yyyy';
+    protected $dateFormat = 'Y-m-d H:i:s';
 
     public function loai(){
       return $this->belongsTo('App\Loai', 'l_ma', 'l_ma');

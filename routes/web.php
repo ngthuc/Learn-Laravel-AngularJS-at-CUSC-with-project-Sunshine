@@ -20,6 +20,10 @@ Route::get('/', function () {
 //   return json_encode($dsChuDe);
 // });
 
-Route::resource('chude','ChuDeController');
-Route::resource('loai','LoaiController');
-Route::resource('sanpham','SanPhamController');
+Route::group(['prefix' => 'admin'], function(){
+
+  Route::resource('chude','ChuDeController');
+  Route::resource('loai','LoaiController');
+  Route::resource('sanpham','SanPhamController');
+
+});

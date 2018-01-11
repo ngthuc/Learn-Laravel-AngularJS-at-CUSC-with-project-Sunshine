@@ -4,6 +4,10 @@
 Hiệu chỉnh Sản phẩm
 @endsection
 
+@section('css')
+<link rel="stylesheet" href="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
+@endsection
+
 @section('page-header')
 <h1>
   Hiệu chỉnh Sản phẩm
@@ -22,7 +26,7 @@ Hiệu chỉnh Sản phẩm
     {{ method_field('PATCH') }}
     <div class="box-body">
       <div class="form-group">
-        <label for="exampleInputPassword1">Loại</label>
+        <label>Loại</label>
         <select class="form-control" name="l_ma" id="l_ma">
           @foreach($dsLoai as $loai)
           <option value="{{ $loai->l_ma }}" <?php echo ($loai->l_ma == $sanpham->l_ma) ? 'selected' : '' ?>>{{ $loai->l_ten }}</option>
@@ -30,19 +34,19 @@ Hiệu chỉnh Sản phẩm
         </select>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Tên Sản phẩm</label>
+        <labe>Tên Sản phẩm</labe>
         <input type="text" class="form-control" name="sp_ten" value="{{ $sanpham->sp_ten }}" placeholder="Vui lòng nhập tên">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Giá gốc</label>
+        <label>Giá gốc</label>
         <input type="text" class="form-control" name="sp_giaGoc" value="{{ $sanpham->sp_giaGoc }}" placeholder="Vui lòng nhập giá gốc">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Giá bán</label>
+        <label>Giá bán</label>
         <input type="text" class="form-control" name="sp_giaBan" value="{{ $sanpham->sp_giaBan }}" placeholder="Vui lòng nhập giá bán">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Hình ảnh</label>
+        <label>Hình ảnh</label>
         <div class="row">
           <div class="col-sm-1">
             <img src="{{ asset('upload/'.$sanpham->sp_hinh) }}" id="img" alt="Hình sản phẩm" width="75px" height="75px">
@@ -54,23 +58,29 @@ Hiệu chỉnh Sản phẩm
         </div>
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Thông tin</label>
+        <label>Thông tin</label>
         <input type="text" class="form-control" name="sp_thongTin" value="{{ $sanpham->sp_thongTin }}" placeholder="Vui lòng nhập thông tin">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Đánh giá</label>
-        <input type="text" class="form-control" name="sp_danhGia" value="{{ $sanpham->sp_danhGia }}" placeholder="Vui lòng đánh giá">
+        <label>Đánh giá</label>
+        <!-- <input type="text" class="form-control" name="sp_danhGia" value="{{ $sanpham->sp_danhGia }}" placeholder="Vui lòng đánh giá"> -->
+        <br>
+        <span class="star-rating">
+          @for($i=1;$i<=5;$i++)
+          <input type="radio" name="sp_danhGia" value="{{ $i }}" <?php echo ($i == $sanpham->sp_danhGia) ? 'checked' : '' ?>> {{ $i }} sao
+          @endfor
+        </span>
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Ngày tạo</label>
+        <label>Ngày tạo</label>
         <input type="text" class="form-control" name="sp_taoMoi" value="{{ $sanpham->sp_taoMoi }}" placeholder="Chọn ngày tạo">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Ngày cập nhật</label>
+        <label>Ngày cập nhật</label>
         <input type="text" class="form-control" name="sp_capNhat" value="{{ $sanpham->sp_capNhat }}" placeholder="Chọn ngày cập nhật">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Trạng thái</label>
+        <label>Trạng thái</label>
         <input type="text" class="form-control" name="sp_trangThai" value="{{ $sanpham->sp_trangThai }}" placeholder="Vui lòng nhập trạng thái">
       </div>
     </div>
@@ -81,4 +91,17 @@ Hiệu chỉnh Sản phẩm
     </div>
   </form>
 </div>
+@endsection
+
+@section('script')
+<script src="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
+<script type="text/javascript">
+  $(function(){
+    // Datepicker
+    $('.datepicker').datepicker({
+      format: 'yyyy-mm-dd',
+      autoclose: true,
+    })
+  })
+</script>
 @endsection

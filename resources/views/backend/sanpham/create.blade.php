@@ -50,7 +50,7 @@ Thêm mới Sản phẩm
         <label>Đánh giá</label>
         <br />
         <!-- <input type="text" class="form-control" name="sp_danhGia" placeholder="Vui lòng đánh giá"> -->
-        <span class="star-rating star-5">
+        <span class="star-rating">
           <input type="radio" name="sp_danhGia" value="1"> 1 sao
           <input type="radio" name="sp_danhGia" value="2"> 2 sao
           <input type="radio" name="sp_danhGia" value="3"> 3 sao
@@ -89,8 +89,7 @@ Thêm mới Sản phẩm
   $(function(){
     // Datepicker
     $('.datepicker').datepicker({
-      dateFormat: 'yyyy-mm-dd',
-      altFormat: 'yyyy-mm-dd',
+      format: 'yyyy-mm-dd',
       autoclose: true,
     })
   })

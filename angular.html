@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Learn AngularJS</title>
+    <script src="public/js/angular.min.js"></script>
+  </head>
+  <body ng-app="ungdungAngularJS">
+    <h1>Ứng dụng AngularJS</h1>
+    <div ng-controller="sinhvienController">
+      Nhập họ: <input type="text" ng-model="sinhvien.ho"><br><br>
+      Nhập tên: <input type="text" ng-model="sinhvien.ten"><br><br>
+      Bạn đang nhập {{ sinhvien.ghephoten() }}
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Tên môn</th>
+            <th>Điểm thi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="monhoc in sinhvien.tenMonHoc">
+            <td>{{ monhoc.ten }}</td>
+            <td>{{ monhoc.diemthi }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <input type="search" ng-model="tenMonHoc" placeholder="Nhập tên môn học cần tìm">
+      <br><br>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Tiêu đề</th>
+            <th>Nội dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tên đang chữ HOA</td>
+            <td>{{ sinhvien.ghephoten() | uppercase }}</td>
+          </tr>
+          <tr>
+            <td>Tên đang chữ thường</td>
+            <td>{{ sinhvien.ghephoten() | lowercase }}</td>
+          </tr>
+          <tr>
+            <td>Học phí</td>
+            <td>{{ sinhvien.hocphi | currency }}</td>
+          </tr>
+          <tr>
+            <td>Môn học</td>
+            <td>
+              <ul>
+                <li ng-repeat="monhoc in sinhvien.tenMonHoc | filter: tenMonHoc | orderBy: 'diemthi'">
+                  {{ monhoc.ten + ', diemthi:' + monhoc.diemthi }}
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <table border="1">
+        <tbody>
+          <tr>
+            <td><input type="checkbox" ng-model="vohieuhoa" />Vô hiệu hóa nút</td>
+            <td><button ng-disabled="vohieuhoa">Nhấn vào đây</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" ng-model="hienthinut" />Hiển thị nút</td>
+            <td><button ng-show="hienthinut">Nhấn vào đây</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" ng-model="annut" />Ẩn nút</td>
+            <td><button ng-hide="annut">Nhấn vào đây</button></td>
+          </tr>
+          <tr>
+            <td><p>Tổng lượt click: {{ demluotclick }}</p></td>
+            <td><button ng-click="demluotclick = demluotclick + 1">Nhấn vào đây</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div ng-controller="sanphamController">
+
+    </div>
+    <!-- script source -->
+    <script>
+      // Khai báo ứng dụng, cho angularjs biết nơi bắt đầu ứng dụng
+      var ungdungangularjs = angular.module("ungdungAngularJS", []);
+
+      // Đăng ký controller
+      ungdungangularjs.controller('sinhvienController', function($scope) {
+        // Tạo một biến dữ liệu sinhvien
+        $scope.sinhvien = {
+          ho: "...",
+          ten: "...",
+          hocphi: 250,
+
+          ghephoten: function() {
+            var sinhvienobj = $scope.sinhvien;
+            return sinhvienobj.ho + " " + sinhvienobj.ten;
+          },
+
+          tenMonHoc: [
+            {ten:'Vật Lý Đại Cương', diemthi: 7.8},
+            {ten:'Hóa Học Đại Cương', diemthi: 9.0},
+            {ten:'Toán Học Đại Cương', diemthi: 10.0},
+            {ten:'Sinh Học Đại Cương', diemthi: 7.5},
+          ]
+        };
+      });
+
+      ungdungangularjs.controller('sanphamController', function($scope) {
+      });
+    </script>
+  </body>
+</html>

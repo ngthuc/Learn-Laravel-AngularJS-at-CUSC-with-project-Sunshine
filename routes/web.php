@@ -27,3 +27,6 @@ Route::group(['prefix' => 'admin'], function(){
   Route::resource('sanpham','SanPhamController');
 
 });
+Route::get('/f', function () {
+    return view('frontend.index');
+});

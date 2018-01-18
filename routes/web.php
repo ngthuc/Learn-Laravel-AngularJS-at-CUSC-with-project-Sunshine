@@ -15,11 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('laydanhsachchude',function(){
-//   $dsChuDe = ChuDe::all();
-//   return json_encode($dsChuDe);
-// });
-
 Route::group(['prefix' => 'admin'], function(){
 
   Route::resource('chude','ChuDeController');
@@ -27,6 +22,13 @@ Route::group(['prefix' => 'admin'], function(){
   Route::resource('sanpham','SanPhamController');
 
 });
+
+Route::group(['prefix' => 'site'], function(){
+
+  //....
+
+});
+
 Route::get('/f', function () {
     return view('frontend.index');
 });

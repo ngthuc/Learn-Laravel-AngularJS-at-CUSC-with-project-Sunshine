@@ -35,10 +35,8 @@ class ChuDeRequest extends FormRequest
     {
         return [
             'cd_ten.required' => 'Tên chủ đề không được phép để trống',
-            'cd_ten.max' => 'Tên chủ đề không được vượt quá :max ký tự',
-            'cd_taoMoi.required' => 'Không được phép để trống giá trị ngày tạo',
-            'cd_capNhat.required' => 'Không được phép để trống giá trị ngày cập nhật',
-            'cd_trangThai.required' => 'Không được phép để trống giá trị trạng thái',
+            'cd_ten.max' => 'Tên chủ để không được vượt quá :max ký tự',
+            'cd_taoMoi.required'  => 'Ngày tạo mới không để trống',
         ];
     }
 }

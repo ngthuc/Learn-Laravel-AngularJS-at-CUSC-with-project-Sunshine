@@ -1,50 +1,80 @@
 @extends('backend.layouts.app')
 
 @section('title')
-Thêm mới Loại
+Them moi Loai
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
 @endsection
 
 @section('page-header')
-<h1>
-  Thêm mới Loại
-</h1>
+Them moi Loai<small>Cac Loại sản phẩm</small>
 @endsection
 
 @section('content')
-<div class="box box-primary">
-  <div class="box-header with-border">
-      <h3 class="box-title">Quick Example</h3>
-  </div>
-  <!-- /.box-header -->
-  <!-- form start -->
-  <form name="frmloai" method="POST" action="{{ route('loai.store') }}">
-    <div class="box-body">
-      {{ csrf_field() }}
-      <div class="form-group">
-        <label>Tên Loại</label>
-        <input type="text" class="form-control" name="l_ten" placeholder="Vui lòng nhập tên">
-      </div>
-      <div class="form-group">
-        <label>Ngày tạo</label>
-        <input type="date" class="form-control" name="l_taoMoi" placeholder="Chọn ngày tạo">
-      </div>
-      <div class="form-group">
-        <label>Ngày cập nhật</label>
-        <input type="date" class="form-control" name="l_capNhat" placeholder="Chọn ngày cập nhật">
-      </div>
-      <div class="form-group">
-        <label>Trạng thái</label>
-        <select class="form-control" name="l_trangThai" id="l_trangThai">
-          <option value="1">Khóa</option>
-          <option value="2">Khả dụng</option>
-        </select>
-      </div>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
-    <!-- /.box-body -->
+@endif
 
-    <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Submit</button>
+<form name="frmloai" method="POST" action="{{ route('loai.store') }}">
+  {{ csrf_field() }}
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Them moi Chu de</h3>
     </div>
-  </form>
-</div>
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ten chu de</label>
+          <input type="text" class="form-control" name="l_ten" id="l_ten" placeholder="Vui long nhap ten">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ngay tao</label>
+          <input type="text" class="form-control" name="l_taoMoi" id="l_taoMoi" placeholder="Vui long nhap ngay tao">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ngay cap nhat</label>
+          <input type="text" class="form-control" name="l_capNhat" id="l_capNhat" placeholder="Vui long nhap ngay cap nhat">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Trang thai</label>
+          <input type="text" class="form-control" name="l_trangThai" id="l_trangThai" placeholder="Vui long nhap trang thai">
+        </div>
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Luu du lieu</button>
+      </div>
+    </form>
+  </div>
+</form>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('theme/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
+<script>
+  $(function () {
+    
+    //Date picker
+    $('#l_taoMoi1').datepicker({
+      
+      dateFormat: 'yyyy-mm-dd',
+      altFormat: "yyyy-mm-dd"
+    })
+
+    $('#l_taoMoi').datepicker({
+      format: 'yyyy-mm-dd'
+    });
+  })
+</script>
 @endsection

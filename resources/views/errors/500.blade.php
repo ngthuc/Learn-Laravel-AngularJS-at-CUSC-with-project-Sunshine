@@ -1,4 +1,2 @@
-<h1>Xin lỗi! Hiện tại máy chủ web đang quá tải.</h1>
-<p>
-  Vui lòng thử lại trong giây lát....
-</p>
+<h1>Xin loi, hien tai may chu Web dang qua tai. Vui long thu lai trong giay lat....</h1>
+

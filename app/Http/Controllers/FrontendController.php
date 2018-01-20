@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SanPham;
 
 class FrontendController extends Controller
 {
@@ -13,7 +14,10 @@ class FrontendController extends Controller
      */
     public function index()
     {
-        //
+        $dsSanPham = SanPham::all();
+
+        return view('frontend.index')
+            ->with('dsSanPham', $dsSanPham);
     }
 
     /**

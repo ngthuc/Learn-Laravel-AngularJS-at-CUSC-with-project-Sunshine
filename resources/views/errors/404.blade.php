@@ -1,4 +1,4 @@
-<h1>Đây là trang lỗi 404</h1>
+<h1>Xin loi, san pham ban tim khong ton lai</h1>
 <p>
-  Vui lòng quay lại trang chủ!
+	Vui long quay lai trang chu de xem them thong tin....
 </p>

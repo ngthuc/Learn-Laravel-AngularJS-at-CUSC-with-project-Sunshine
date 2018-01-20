@@ -1,49 +1,48 @@
 @extends('backend.layouts.app')
 
 @section('title')
-Hiệu chỉnh Chủ đề
+Hieu chinh Chu de
 @endsection
 
 @section('page-header')
-<h1>
-  Hiệu chỉnh Chủ đề
-  <small>Các chủ đề về loại hoa</small>
-</h1>
+Hieu chinh Chu de<small>Cac chu de ve loai hoa</small>
 @endsection
 
 @section('content')
-<div class="box box-primary">
-  <div class="box-header with-border">
-      <h3 class="box-title">Quick Example</h3>
-  </div>
-  <!-- /.box-header -->
-  <!-- form start -->
-  <form name="frmChuDe" method="POST" action="{{ route('chude.update', ['chude' => $chude->cd_ma]) }}">
-    {{ csrf_field() }}
-    {{ method_field('PATCH') }}
-    <div class="box-body">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Tên chủ đề</label>
-        <input type="text" class="form-control" name="cd_ten" value="{{ $chude->cd_ten }}" placeholder="Vui lòng nhập tên">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Ngày tạo</label>
-        <input type="text" class="form-control" name="cd_taoMoi" value="{{ $chude->cd_taoMoi }}" placeholder="Chọn ngày tạo">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Ngày cập nhật</label>
-        <input type="text" class="form-control" name="cd_capNhat" value="{{ $chude->cd_capNhat }}" placeholder="Chọn ngày cập nhật">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Trạng thái</label>
-        <input type="text" class="form-control" name="cd_trangThai" value="{{ $chude->cd_trangThai }}" placeholder="Vui lòng nhập trạng thái">
-      </div>
+<form name="frmChuDe" method="POST" action="{{ route('chude.update', ['chude' => $chude->cd_ma]) }}">
+  {{ csrf_field() }}
+  {{ method_field("PATCH") }}
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Hieu chinh Chu de</h3>
     </div>
-    <!-- /.box-body -->
+    <!-- /.box-header -->
+    <!-- form start -->
+    <form role="form">
+      <div class="box-body">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ten chu de</label>
+          <input type="text" class="form-control" name="cd_ten" id="cd_ten" placeholder="Vui long nhap ten" value="{{ $chude->cd_ten }}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ngay tao</label>
+          <input type="text" class="form-control" name="cd_taoMoi" id="cd_taoMoi" placeholder="Vui long nhap ngay tao" value="{{ $chude->cd_taoMoi }}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ngay cap nhat</label>
+          <input type="text" class="form-control" name="cd_capNhat" id="cd_capNhat" placeholder="Vui long nhap ngay cap nhat" value="{{ $chude->cd_capNhat }}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Trang thai</label>
+          <input type="text" class="form-control" name="cd_trangThai" id="cd_trangThai" placeholder="Vui long nhap trang thai" value="{{ $chude->cd_trangThai }}">
+        </div>
+      </div>
+      <!-- /.box-body -->
 
-    <div class="box-footer">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </form>
-</div>
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Luu du lieu</button>
+      </div>
+    </form>
+  </div>
+</form>
 @endsection

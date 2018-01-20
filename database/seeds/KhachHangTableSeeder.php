@@ -5,7 +5,7 @@ use Illuminate\PhpVnDataGenerator\VnBase;
 use Illuminate\PhpVnDataGenerator\VnFullname;
 use Illuminate\PhpVnDataGenerator\VnPersonalInfo;
 
-class KhachHangTableSeeder extends Seeder {
+class KhachhangTableSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
@@ -61,7 +61,7 @@ class KhachHangTableSeeder extends Seeder {
                     } else if ($xs < 900) {
                         $step .= VnBase::RandomNumber(21601, 43200);
                     } else {
-                        $step .= VnBase::RandomNumber(43201, 86400);
+                        $step .= VnBase::RandomNumber(43201, 86400);                    
                     }
                     $step .= "S";
                 } else {
@@ -71,7 +71,7 @@ class KhachHangTableSeeder extends Seeder {
                     } else if ($xs < 800) {
                         $step .= VnBase::RandomNumber(6, 15);
                     } else {
-                        $step .= VnBase::RandomNumber(16, 25);
+                        $step .= VnBase::RandomNumber(16, 25);                    
                     }
                     $step .= "D";
                 }
@@ -105,6 +105,6 @@ class KhachHangTableSeeder extends Seeder {
                 'kh_trangThai' => ($i <= $nCustomers-3? 2: 3)
             ]);
         }
-        DB::table('khachhang')->insert($list);
+        DB::table('cusc_khachhang')->insert($list);
     }
 }

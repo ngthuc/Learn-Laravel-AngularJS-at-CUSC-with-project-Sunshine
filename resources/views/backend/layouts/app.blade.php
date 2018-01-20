@@ -59,24 +59,22 @@ desired effect
 <div class="wrapper">
 
   <!-- Main Header -->
-  @include ('backend.includes.header');
+  @include('backend.includes.header')
 
   <!-- Left side column. contains the logo and sidebar -->
-  @include ('backend.includes.sidebar');
+  @include('backend.includes.sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <!-- <h1>
-        Page Header
-        <small>Optional description</small>
+      <h1>
+        @yield('page-header')
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
-      </ol> -->
-      @yield('page-header')
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -94,14 +92,7 @@ desired effect
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-  </footer>
+  @include('backend.includes.footer')
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -191,9 +182,7 @@ desired effect
 <!-- AdminLTE App -->
 <script src="{{ asset('theme/adminlte/dist/js/adminlte.min.js') }}"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-@yield('script')
+@yield('scripts')
+
 </body>
 </html>

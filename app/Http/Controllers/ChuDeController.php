@@ -3,139 +3,108 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\ChuDeRequest;
+use DB;
 use App\Chude;
+use App\Http\Requests\ChuDeRequest;
 
 class ChuDeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function LayHetDanhSach()
     {
-      $dsChude = ChuDe::all();
-      // return json_encode($dsChude);
-      return view('backend.chude.index')->with('dsChude',$dsChude);
+    	//$dsChuDe = Chude::all();
+		$dsChuDe = DB::table('cusc_chude')->get();
+		return json_encode($dsChuDe);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function LayDongDauTien()
+    {
+    	return 'Lay dong dau tien cua chu de';
+    }
+
+    public function index()
+    {
+        $dsChuDe = DB::table('cusc_chude')->get();
+        
+        return view('backend.chude.index')
+            ->with('dsChuDe', $dsChuDe);
+    }
+
     public function create()
     {
         return view('backend.chude.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(ChuDeRequest $request)
     {
-        // $this->validate($request,[
-        //     'cd_ten' => 'required|max:20',
-        //     'cd_taoMoi' => 'required',
-        //     'cd_capNhat' => 'required',
-        //     'cd_trangThai' => 'required',
-        // ]);
-
+        /*
+        $this->validate($request, [
+            'cd_ten' => 'required|max:20',
+            'cd_taoMoi' => 'required',
+            'cd_capNhat' => 'required',
+            'cd_trangThai' => 'required',
+        ]);
+        */
         try {
-          // Lưu vào CSDL
-          $chude = new ChuDe();
-          $chude->cd_ten = $request->cd_ten;
-          $chude->cd_taoMoi = $request->cd_taoMoi;
-          $chude->cd_capNhat = $request->cd_capNhat;
-          $chude->cd_trangThai = $request->cd_trangThai;
-          $save = $chude->save();
+            $chude = new Chude();
+            $chude->cd_ten = $request->cd_ten;
+            $chude->cd_taoMoi = $request->cd_taoMoi;
+            $chude->cd_capNhat = $request->cd_capNhat;
+            $chude->cd_trangThai = $request->cd_trangThai;
+            $chude->save();
 
-          return redirect(route('chude.index'));
+            return redirect(route('chude.index'));
         }
-        catch(QueryException $ex) {
-          return response([
-              'error' => true, 'message' => $ex->getMessage()
-            ], 500);
+        catch(QueryException $ex)
+        {
+            return response([
+                    'error' => true, 'message' => $ex->getMessage()
+                ], 500);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        // Sửa dữ liệu
-        $chude = ChuDe::find($id);
+        $chude = Chude::find($id);
 
-        return view('backend.chude.edit')->with('chude', $chude);
+        return view('backend.chude.edit')
+            ->with('chude', $chude);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        // Cập nhật dữ liệu một dòng
         try {
-          // Lưu vào CSDL
-          $chude = ChuDe::find($id);
-          $chude->cd_ten = $request->cd_ten;
-          $chude->cd_taoMoi = $request->cd_taoMoi;
-          $chude->cd_capNhat = $request->cd_capNhat;
-          $chude->cd_trangThai = $request->cd_trangThai;
-          $save = $chude->save();
+            $chude = Chude::find($id);
+            $chude->cd_ten = $request->cd_ten;
+            $chude->cd_taoMoi = $request->cd_taoMoi;
+            $chude->cd_capNhat = $request->cd_capNhat;
+            $chude->cd_trangThai = $request->cd_trangThai;
+            $chude->save();
 
-          return redirect(route('chude.index'));
+            return redirect(route('chude.index'));
         }
-        catch(QueryException $ex) {
-          return response([
-              'error' => true, 'message' => $ex->getMessage()
-            ], 500);
+        catch(QueryException $ex)
+        {
+            return response([
+                    'error' => true, 'message' => $ex->getMessage()
+                ], 500);
         }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-      // Xóa dữ liệu
-      try {
-        // Lưu vào CSDL
-        $chude = ChuDe::find($id);
-        $save = $chude->delete();
+        try {
+            $chude = Chude::find($id);
+            $chude->delete();
+            
+            return redirect(route('chude.index'));
+        }
+        catch(QueryException $ex)
+        {
+            return response([
+                    'error' => true, 'message' => $ex->getMessage()
+                ], 500);
+        }
 
-        return redirect(route('chude.index'));
-      }
-      catch(QueryException $ex) {
-        return response([
-            'error' => true, 'message' => $ex->getMessage()
-          ], 500);
-      }
     }
 }

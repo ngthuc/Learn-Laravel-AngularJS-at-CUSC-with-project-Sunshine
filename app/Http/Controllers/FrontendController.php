@@ -19,6 +19,13 @@ class FrontendController extends Controller
         return view('frontend.index')
             ->with('dsSanPham', $dsSanPham);
     }
+    public function checkout()
+    {
+        
+
+        return view('frontend.layouts.checkout');
+            
+    }
 
     /**
      * Show the form for creating a new resource.

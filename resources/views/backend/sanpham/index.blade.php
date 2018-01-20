@@ -43,7 +43,7 @@ Sản phẩm<small>Cac sản phẩm</small>
         </tr>
         @foreach($dsSanPham as $sanpham)
         <tr>
-          <td>{{ $sanpham->sp_ma }}</td>
+          <td>{{ $sanpham->sp_ma }}</td> 
           <td>{{ $sanpham->sp_ten }}</td>
           <td>{{ $sanpham->sp_giaGoc }}</td>
           <td>{{ $sanpham->sp_giaBan }}</td>

@@ -26,16 +26,16 @@ Route::get('laydanhsachchude', function(){
 //Route::get('laydanhsach/het', 'ChuDeController@LayHetDanhSach');
 //Route::get('laydanhsach/laydongdautien', 'ChuDeController@LayDongDauTien');
 
+Route::get('/', 'FrontendController@index');
+Route::get('/checkout', 'FrontendController@checkout');
 Route::group(['prefix' => 'admin'], function() {
 
 	Route::resource('chude', 'ChuDeController');
 	Route::resource('loai', 'LoaiController');
-	Route::resource('sanpham', 'SanPhamController');	
+	Route::resource('sanpham', 'SanPhamController');
 
 });
 
 // Route::get('/', function() {
 // 	return view('frontend.index');
 // });
-
-Route::get('/', 'FrontendController@index');

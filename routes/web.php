@@ -12,6 +12,13 @@
 */
 use App\Chude;
 
+Route::get('/', 'FrontendController@index');
+Route::get('/checkout', 'FrontendController@showViewCheckout')->name('checkout');
+Route::get('/testmail', 'FrontendController@testMail');
+Route::get('/checkoutJson', 'FrontendController@checkoutJson')->name('checkoutjson');
+
+
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -26,8 +33,6 @@ Route::get('laydanhsachchude', function(){
 //Route::get('laydanhsach/het', 'ChuDeController@LayHetDanhSach');
 //Route::get('laydanhsach/laydongdautien', 'ChuDeController@LayDongDauTien');
 
-Route::get('/', 'FrontendController@index');
-Route::get('/checkout', 'FrontendController@checkout');
 Route::group(['prefix' => 'admin'], function() {
 
 	Route::resource('chude', 'ChuDeController');

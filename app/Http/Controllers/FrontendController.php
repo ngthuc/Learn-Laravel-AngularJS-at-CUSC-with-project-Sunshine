@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SanPham;
+use Mail;
+use App\Mail\OrderedShip;
 
 class FrontendController extends Controller
 {
@@ -18,13 +20,6 @@ class FrontendController extends Controller
 
         return view('frontend.index')
             ->with('dsSanPham', $dsSanPham);
-    }
-    public function checkout()
-    {
-        
-
-        return view('frontend.layouts.checkout');
-            
     }
 
     /**
@@ -91,5 +86,27 @@ class FrontendController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showViewCheckout()
+    {
+        return view('frontend.checkout');
+    }
+
+    public function testMail()
+    {
+        Mail::to('ngthuc.hrm@lapvo3.tk')
+          ->send(new OrderedShip());
+    }
+
+    public function checkoutJson(Request $request)
+    {
+        $input = $request->getContent();
+        $data = json_decode($input, true); // JSON to array
+
+        Mail::to('ngthuc.hrm@lapvo3.tk')
+          ->send(new OrderedShip($data));
+
+        return $data;
     }
 }

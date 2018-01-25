@@ -31,7 +31,7 @@ class LoaiController extends Controller
         try {
             $loai = new loai();
             $loai->l_ten = $request->l_ten;
-            $loai->l_taoMoi = $request->l_taoMoi;
+            $loai->l_taoMoi = Carbon::createFromFormat('d/m/y H:i:s', $request->l_taoMoi);
             $loai->l_capNhat = $request->l_capNhat;
             $loai->l_trangThai = $request->l_trangThai;
             $loai->save();
@@ -80,7 +80,7 @@ class LoaiController extends Controller
         try {
             $loai = loai::find($id);
             $loai->delete();
-
+            
             return redirect(route('loai.index'));
         }
         catch(QueryException $ex)

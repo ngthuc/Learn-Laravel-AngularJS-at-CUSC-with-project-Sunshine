@@ -262,7 +262,7 @@
             <!--/.nav-collapse -->
 
             <div class="navbar-buttons">
-
+                
                 <ngcart-summary template-url="{{ asset('vendor/ngCart/template/ngCart/summary.html') }}"></ngcart-summary>
                 
                 <!--/.nav-collapse -->

@@ -15,7 +15,7 @@ use App\Chude;
 Route::get('/', 'FrontendController@index');
 Route::get('/checkout', 'FrontendController@showViewCheckout')->name('checkout');
 Route::get('/testmail', 'FrontendController@testMail');
-Route::get('/checkoutJson', 'FrontendController@checkoutJson')->name('checkout');
+Route::post('/checkoutJson', 'FrontendController@checkoutJson')->name('checkout');
 
 
 

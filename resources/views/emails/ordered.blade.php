@@ -12,10 +12,10 @@ Nhấn vào đây để xác nhận đơn hàng
 <table border="1">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Quantity</th>
+      <th>Mã số</th>
+      <th>Tên sản phẩm</th>
+      <th>Giá bán</th>
+      <th>Số lượng</th>
     </tr>
   </thead>
   <tbody>

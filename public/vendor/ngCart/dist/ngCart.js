@@ -149,16 +149,16 @@ angular.module('ngCart', ['ngCart.directives'])
         };
 
         this.empty = function () {
-            
+
             $rootScope.$broadcast('ngCart:change', {});
             this.$cart.items = [];
             $window.localStorage.removeItem('cart');
         };
-        
+
         this.isEmpty = function () {
-            
+
             return (this.$cart.items.length > 0 ? false : true);
-            
+
         };
 
         this.toObject = function() {
@@ -357,7 +357,7 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
             },
             transclude: true,
             templateUrl: function(element, attrs) {
-                
+
                 if ( typeof attrs.templateUrl == 'undefined' ) {
                     return 'vendor/ngCart/template/ngCart/addtocart.html';
                 } else {
@@ -429,11 +429,23 @@ angular.module('ngCart.directives', ['ngCart.fulfilment'])
                 $scope.checkout = function () {
                     fulfilmentProvider.setService($scope.service);
                     fulfilmentProvider.setSettings($scope.settings);
+
+                //     fulfilmentProvider.checkout()
+                //         .success(function (data, status, headers, config) {
+                //             $rootScope.$broadcast('ngCart:checkout_succeeded', data);
+                //         })
+                //         .error(function (data, status, headers, config) {
+                //             $rootScope.$broadcast('ngCart:checkout_failed', {
+                //                 statusCode: status,
+                //                 error: data
+                //             });
+                //         });
+                // Promise ES6 Javascript
                     fulfilmentProvider.checkout()
-                        .success(function (data, status, headers, config) {
+                        .then(function (data, status, headers, config) {
                             $rootScope.$broadcast('ngCart:checkout_succeeded', data);
-                        })
-                        .error(function (data, status, headers, config) {
+                        },
+                        function (data, status, headers, config) {
                             $rootScope.$broadcast('ngCart:checkout_failed', {
                                 statusCode: status,
                                 error: data

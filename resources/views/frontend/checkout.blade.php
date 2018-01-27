@@ -21,6 +21,8 @@ Trang kiểm tra Giỏ hàng
 
                 <!-- /.col-md-3 -->
 
+                <ngcart-checkout service="http" settings="{ url:'/checkoutJson', _token:'{{ csrf_token() }}' }">Gửi dữ liệu</ngcart-checkout>
+
             </div>
             <!-- /.container -->
         </div>
